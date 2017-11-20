@@ -1071,7 +1071,7 @@ PIPELINE_JS = {
     # bundle should offset the extra weight.
     'common': {
         'source_filenames': (
-            'js/libs/jquery-1.11.3.min.js',
+            'js/libs/jquery-3.2.1.min.js',
             'js/libs/spin.min.js',  # used by js/newsletter/form.js
             'js/base/mozilla-utils.js',
             'js/newsletter/form.js',
@@ -1087,6 +1087,14 @@ PIPELINE_JS = {
             'js/base/search-params.js',
         ),
         'output_filename': 'js/common-bundle.js',
+    },
+    'common-ie8': {
+        'source_filenames': (
+            'js/libs/jquery-1.11.3.min.js',
+            'js/ie8/mozilla-ie8-utils.js',
+            'js/ie8/base-page-init-ie8.js',
+        ),
+        'output_filename': 'js/common-ie8-bundle.js',
     },
     'contact-spaces': {
         'source_filenames': (
@@ -1688,7 +1696,7 @@ PIPELINE_JS = {
     },
     'tracking-protection-tour': {
         'source_filenames': (
-            'js/libs/jquery-1.11.3.min.js',
+            'js/libs/jquery-3.2.1.min.js',
             'js/base/uitour-lib.js',
             'js/firefox/tracking-protection-tour.js',
             'js/firefox/tracking-protection-tour-init.js',
@@ -1732,14 +1740,6 @@ PIPELINE_JS = {
             'js/firefox/firefox-language-search.js',
         ),
         'output_filename': 'js/thunderbird_all-bundle.js',
-    },
-    'newsletter_form': {
-        'source_filenames': (
-            'js/libs/jquery-1.11.3.min.js',
-            'js/libs/spin.min.js',
-            'js/newsletter/form.js',
-        ),
-        'output_filename': 'js/newsletter_form-bundle.js',
     },
     'matchmedia': {
         'source_filenames': (

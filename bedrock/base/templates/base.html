@@ -8,7 +8,9 @@
     <meta charset="utf-8">{# Note: Must be within first 512 bytes of page #}
 
     {% javascript 'site' %}
+    <!--[if !lte IE 8]><!-->
     {% block experiments %}{% endblock %}
+    <!--<![endif]-->
 
 <!--
 {% include "includes/careers-teaser.html" %}
@@ -150,9 +152,18 @@
     </div><!-- close #outer-wrapper -->
 
     {% block site_js %}
-      {% javascript 'common' %}
+      {# IE <= 8 gets a special bundle #}
+      <!--[if !lte IE 8]><!-->
+        {% javascript 'common' %}
+      <!--<![endif]-->
+
+      <!--[if lte IE 8]>
+        {% javascript 'common-ie8' %}
+      <![endif]-->
     {% endblock %}
 
+    {# Do not serve JS below to <= IE 8 #}
+    <!--[if !lte IE 8]><!-->
     {# Bug 1279291 #}
     {% block stub_attribution %}
       {% if settings.STUB_ATTRIBUTION_RATE %}
@@ -170,9 +181,8 @@
     {% endblock %}
 
     {% if settings.DEV %}
-      <!--[if !lte IE 8]><!-->
-        <script src="https://pontoon.mozilla.org/pontoon.js"></script>
-      <!--<![endif]-->
+      <script src="https://pontoon.mozilla.org/pontoon.js"></script>
     {% endif %}
+    <!--<![endif]-->
   </body>
 </html>
