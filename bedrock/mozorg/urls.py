@@ -11,7 +11,7 @@ from bedrock.redirects.util import redirect
 
 urlpatterns = (
     url('^$', views.home, name='mozorg.home'),
-    page('about', 'mozorg/about.html'),
+    url('^about', views.about, name='mozorg.about'),
     page('about/manifesto', 'mozorg/about/manifesto.html'),
     page('about/manifesto/details', 'mozorg/about/manifesto-details.html'),
     page('about/leadership', 'mozorg/about/leadership.html'),
@@ -214,7 +214,8 @@ urlpatterns = (
     page('MPL/2.0/differences', 'mozorg/mpl/2.0/differences.html'),
     page('MPL/2.0/permissive-code-into-mpl', 'mozorg/mpl/2.0/permissive-code-into-mpl.html'),
 
-    page('contribute', 'mozorg/contribute/index.html'),
+    # page('contribute', 'mozorg/contribute/index.html'),
+    url('^contribute', views.contribute, name='mozorg.contribute.index'),
     url('^contribute/embed/$', views.contribute_embed,
         name='mozorg.contribute_embed'),
     page('contribute/events', 'mozorg/contribute/events.html'),
